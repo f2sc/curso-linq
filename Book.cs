@@ -8,21 +8,21 @@ namespace curso_linq
 {
     public class Book
     {
-        private string Title {get; set;}
+        public string Title {get; set;}
 
-        private int PageCount {get; set;}
+        public int PageCount {get; set;}
 
-        private DateTime PublishedDate {get; set;}
+        public DateTime PublishedDate {get; set;}
 
-        private string ThumbnailUrl {get; set;}
+        public string ThumbnailUrl {get; set;}
 
-        private string ShortDescription {get; set;}
+        public string ShortDescription {get; set;}
 
-        private status Status {get; set;}
+        public string Status {get; set;}
 
-        private string[] Authors {get; set;}
+        public string[] Authors {get; set;}
 
-        private string[] Categories {get; set;}
+        public string[] Categories {get; set;}
 
 
     }
