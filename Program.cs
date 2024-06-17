@@ -5,7 +5,9 @@ using curso_linq;
 
 LinqQueries queries = new LinqQueries();
 
-ImprimirValores(queries.TodaLaColeccion());
+//ImprimirValores(queries.TodaLaColeccion());
+//ImprimirValores(queries.LibrosDespuesDel2000());
+ImprimirValores(queries.LibrosConMasDe250paginasInAction());
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {
@@ -14,4 +16,6 @@ void ImprimirValores(IEnumerable<Book> ListaDeLibros)
     {
         Console.WriteLine("{0,-60} {1, 15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
     }
+
+
 }
