@@ -11,14 +11,29 @@ namespace curso_linq
     public class LinqQueries
     {
         private List<Book> librosCollection = new List<Book>();
+        private List<Animal> animalesCollection = new List<Animal>();
 
         public LinqQueries() 
-        { 
+        {
             using(StreamReader reader = new StreamReader("books.json"))
             {
                 string json = reader.ReadToEnd();
                 this.librosCollection = JsonSerializer.Deserialize<List<Book>>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true })!;
             }
+
+            //Creo varias instancias de la clase Animal para operar con ellos.
+            animalesCollection.Add(new Animal() { Nombre = "Hormiga", Color = "Rojo" });
+            animalesCollection.Add(new Animal() { Nombre = "Lobo", Color = "Gris" });
+            animalesCollection.Add(new Animal() { Nombre = "Elefante", Color = "Gris" });
+            animalesCollection.Add(new Animal() { Nombre = "Pantegra", Color = "Negro" });
+            animalesCollection.Add(new Animal() { Nombre = "Gato", Color = "Negro" });
+            animalesCollection.Add(new Animal() { Nombre = "Iguana", Color = "Verde" });
+            animalesCollection.Add(new Animal() { Nombre = "Sapo", Color = "Verde" });
+            animalesCollection.Add(new Animal() { Nombre = "Camaleon", Color = "Verde" });
+            animalesCollection.Add(new Animal() { Nombre = "Gallina", Color = "Blanco" });
+
+            // Escribe tu código aquí
+            // filtra todos los animales que sean de color verde que su nombre inicie con una vocal
         }
 
         public IEnumerable<Book> TodaLaColeccion()
@@ -45,6 +60,27 @@ namespace curso_linq
             // Esta es la manera con Query Expression
             //return from l in librosCollection where l.Title.Contains("in Action") where l.PageCount > 250 select l;
 
+        }
+
+        public IEnumerable<Animal> AnimalesVerdesQueEmpiecenPorVocal() 
+        {
+            return animalesCollection.Where(p => p.Color.Equals("gris",StringComparison.CurrentCultureIgnoreCase)
+            && (p.Nombre.StartsWith("a", StringComparison.CurrentCultureIgnoreCase) 
+            || p.Nombre.StartsWith("e",StringComparison.CurrentCultureIgnoreCase) 
+            || p.Nombre.StartsWith("i",StringComparison.CurrentCultureIgnoreCase) 
+            || p.Nombre.StartsWith("o", StringComparison.CurrentCultureIgnoreCase) 
+            || p.Nombre.StartsWith("u", StringComparison.CurrentCultureIgnoreCase))
+            );
+        }
+
+        public bool TodosLosLibrosTienenStatus()
+        {
+            return librosCollection.All(p => p.Status != string.Empty);
+        }
+
+        public bool AlgunoDeLosLibrosFueronPublicadosEn2005()
+        {
+            return librosCollection.Any(p => p.PublishedDate.Year == 2005);
         }
     }
 }
