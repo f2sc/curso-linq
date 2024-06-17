@@ -82,5 +82,10 @@ namespace curso_linq
         {
             return librosCollection.Any(p => p.PublishedDate.Year == 2005);
         }
+
+        public IEnumerable<Book> DevuelveLosLibrosSobrePython()
+        {
+            return librosCollection.Where(p => p.Title.Contains("Python",StringComparison.OrdinalIgnoreCase));
+        }
     }
 }
