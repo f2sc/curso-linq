@@ -158,5 +158,27 @@ namespace curso_linq
         {
             return librosCollection.MaxBy(p => p.PublishedDate);
         }
+
+        public int NumeroDePaginasTotalesDeLosLibrosQueTienenEntre0Y500Paginas()
+        {
+            return librosCollection
+                .Where(p => p.PageCount > 0 && p.PageCount <= 500)
+                .Sum(p => p.PageCount);
+        }
+
+        public string TitulosDeLibrosDespuesDe2015Concatenados()
+        {
+            return librosCollection
+                .Where(p => p.PublishedDate.Year >= 2015)
+                .Aggregate("", (stringTitulo, libro) =>
+                {
+                    if (stringTitulo == string.Empty)
+                        stringTitulo = libro.Title;
+                    else
+                        stringTitulo += " - " + libro.Title;
+
+                    return stringTitulo;
+                });
+        }
     }
 }

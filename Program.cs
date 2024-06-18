@@ -36,7 +36,11 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirValoresDelLibro(queries.LibroConMenorNumeroDePaginasPeroMayorQueCero());
 
-ImprimirValoresDelLibro(queries.libroConFechaDePublicacionMasReciente());
+//ImprimirValoresDelLibro(queries.libroConFechaDePublicacionMasReciente());
+
+//Console.WriteLine($"La cantidad de páginas de todos los libros que tienen entre 0 y 500 páginas es de: {queries.NumeroDePaginasTotalesDeLosLibrosQueTienenEntre0Y500Paginas()} páginas.");
+
+Console.WriteLine($"Estos son los títulos de los libros publicados desde el año 2015:\n {queries.TitulosDeLibrosDespuesDe2015Concatenados()}");
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {
