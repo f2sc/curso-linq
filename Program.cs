@@ -40,7 +40,11 @@ LinqQueries queries = new LinqQueries();
 
 //Console.WriteLine($"La cantidad de páginas de todos los libros que tienen entre 0 y 500 páginas es de: {queries.NumeroDePaginasTotalesDeLosLibrosQueTienenEntre0Y500Paginas()} páginas.");
 
-Console.WriteLine($"Estos son los títulos de los libros publicados desde el año 2015:\n {queries.TitulosDeLibrosDespuesDe2015Concatenados()}");
+//Console.WriteLine($"Estos son los títulos de los libros publicados desde el año 2015:\n {queries.TitulosDeLibrosDespuesDe2015Concatenados()}");
+
+//Console.WriteLine($"Promedio de caracteres que tienen los títulos:\n {queries.PromedioDeCaracteresQueTienenLosTitulos()}");
+
+Console.WriteLine($"Promedio de número de páginas que tienen todos los libros:\n {queries.PromedioDeNumeroDePaginasDeTodosLosLibros()}");
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {
