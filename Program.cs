@@ -23,7 +23,9 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirValores(queries.TresLibrosMasRecientesDeJava());
 
-ImprimirValores(queries.tercerYCuartoLibroConMasDe400Paginas());
+//ImprimirValores(queries.tercerYCuartoLibroConMasDe400Paginas());
+
+ImprimirValoresSoloTituloYPaginas(queries.TituloYNumeroDePaginasDeLosPrimerosTresLibros());
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {
@@ -31,6 +33,15 @@ void ImprimirValores(IEnumerable<Book> ListaDeLibros)
     foreach(var item in ListaDeLibros)
     {
         Console.WriteLine("{0,-60} {1, 15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
+    }
+}
+
+void ImprimirValoresSoloTituloYPaginas(IEnumerable<Book> ListaDeLibros)
+{
+    Console.WriteLine("{0,-60} {1, 15}\n","Titulo", "N. páginas");
+    foreach(var item in ListaDeLibros)
+    {
+        Console.WriteLine("{0,-60} {1, 15}\n", item.Title, item.PageCount);
     }
 }
 
