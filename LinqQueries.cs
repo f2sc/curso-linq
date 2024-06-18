@@ -136,5 +136,15 @@ namespace curso_linq
             return librosCollection
                 .Count(p => p.PageCount <= 500 &&  p.PageCount >= 200);
         }
+
+        public DateTime MenorFechaDePublicacionDeLibros()
+        {
+            return librosCollection.Min(p => p.PublishedDate);
+        }
+
+        public int NumeroDePaginasDelLibroConMasPaginas()
+        {
+            return librosCollection.Max(p => p.PageCount);
+        }
     }
 }
