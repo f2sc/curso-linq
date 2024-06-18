@@ -32,20 +32,35 @@ LinqQueries queries = new LinqQueries();
 
 //Console.WriteLine($"El libro con la fecha de publicación más antiguo tiene fecha de: {queries.MenorFechaDePublicacionDeLibros()}");
 
-Console.WriteLine($"El libro con más páginas tiene : {queries.NumeroDePaginasDelLibroConMasPaginas()} páginas");
+//Console.WriteLine($"El libro con más páginas tiene : {queries.NumeroDePaginasDelLibroConMasPaginas()} páginas");
+
+//ImprimirValoresDelLibro(queries.LibroConMenorNumeroDePaginasPeroMayorQueCero());
+
+ImprimirValoresDelLibro(queries.libroConFechaDePublicacionMasReciente());
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {
-    Console.WriteLine("{0,-60} {1, 15} {2,15}\n","Titulo", "N. páginas", "Fecha publicacion");
+    Console.WriteLine("{0,-60} {1, 15} {2,15}\n","Título", "N. páginas", "Fecha publicacion");
     foreach(var item in ListaDeLibros)
     {
         Console.WriteLine("{0,-60} {1, 15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
     }
 }
 
+void ImprimirValoresDelLibro(Book? Libro)
+{
+    if (Libro == null)
+    {
+        Console.WriteLine("No se ha encontrado ningún libro.");
+        return;
+    }
+    Console.WriteLine("{0,-60} {1, 15} {2,15}\n","Título", "N. páginas", "Fecha publicacion");
+    Console.WriteLine("{0,-60} {1, 15} {2,15}\n", Libro.Title, Libro.PageCount, Libro.PublishedDate.ToShortDateString());
+}
+
 void ImprimirValoresSoloTituloYPaginas(IEnumerable<Book> ListaDeLibros)
 {
-    Console.WriteLine("{0,-60} {1, 15}\n","Titulo", "N. páginas");
+    Console.WriteLine("{0,-60} {1, 15}\n","Título", "N. páginas");
     foreach(var item in ListaDeLibros)
     {
         Console.WriteLine("{0,-60} {1, 15}\n", item.Title, item.PageCount);
