@@ -16,9 +16,14 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirValores(queries.DevuelveLosLibrosSobrePython());
 //ImprimirValores(queries.LibrosDeJavaOrdenadosPorNombre());
-ImprimirValores(queries.LibrosDeMasDe450PaginasOrdenadasPorPagDescendiente());
+//ImprimirValores(queries.LibrosDeMasDe450PaginasOrdenadasPorPagDescendiente());
 
+// Retorna los elementos de la colleción animal ordenados por nombre
+//ImprimirAnimales(queries.AnimalesOrdenadosPorNombre());
 
+//ImprimirValores(queries.TresLibrosMasRecientesDeJava());
+
+ImprimirValores(queries.tercerYCuartoLibroConMasDe400Paginas());
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {
