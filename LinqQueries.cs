@@ -124,5 +124,17 @@ namespace curso_linq
                 .Take(3)
                 .Select(p => new Book() { Title = p.Title, PageCount = p.PageCount });
         }
+
+        public int NumeroDeLibrosEntre200Y500Paginas()
+        {
+            //return librosCollection
+            //    .Where(p => p.PageCount <= 500)
+            //    .Where(p => p.PageCount >= 200)
+            //    .Count();
+
+            //Count permite insertar una condición y así evitar una operación extra.
+            return librosCollection
+                .Count(p => p.PageCount <= 500 &&  p.PageCount >= 200);
+        }
     }
 }
