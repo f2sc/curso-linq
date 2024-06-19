@@ -46,7 +46,9 @@ LinqQueries queries = new LinqQueries();
 
 //Console.WriteLine($"Promedio de número de páginas que tienen todos los libros:\n {queries.PromedioDeNumeroDePaginasDeTodosLosLibros()}");
 
-ImprimirValoresAgrupados(queries.LibrosDespuesDel2000AgrupadosPorAno());
+//ImprimirValoresAgrupados(queries.LibrosDespuesDel2000AgrupadosPorAno());
+
+ImprimirAnimalesAgrupados(queries.AnimalesAgrupadosPorColores());
 
 void ImprimirValoresAgrupados(IEnumerable<IGrouping<int, Book>> ListaDeLibros)
 {
@@ -97,6 +99,20 @@ void ImprimirAnimales(IEnumerable<Animal> ListaDeAnimales)
     foreach (var item in ListaDeAnimales)
     {
         Console.WriteLine("{0,-60} {1, 15}\n", item.Nombre, item.Color);
+    }
+}
+
+void ImprimirAnimalesAgrupados(IEnumerable<IGrouping<string, Animal>> ListaDeAnimales)
+{
+    foreach (var AnimalesColores in ListaDeAnimales)
+    {
+        Console.WriteLine($"\nColor: {AnimalesColores.Key}");
+    Console.WriteLine("{0,-60} {1, 15}", "Nombre", "Color");
+        foreach (var animal in AnimalesColores)
+        {
+            Console.WriteLine("{0,-60} {1, 15}", animal.Nombre, animal.Color);
+        }
+
     }
 }
 

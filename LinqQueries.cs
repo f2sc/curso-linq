@@ -199,5 +199,11 @@ namespace curso_linq
                 .Where(p => p.PublishedDate.Year >= 2000)
                 .GroupBy(p => p.PublishedDate.Year);
         }
+
+        public IEnumerable<IGrouping<string, Animal>> AnimalesAgrupadosPorColores()
+        {
+            return animalesCollection
+                .GroupBy(p => p.Color);
+        }
     }
 }
