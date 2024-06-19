@@ -50,9 +50,20 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirAnimalesAgrupados(queries.AnimalesAgrupadosPorColores());
 
-ImprimirAnimalesAgrupadosDiccionario(queries.DiccionarioDeLibrosPorLetra(), 'S');
+//ImprimirValoresAgrupadosDiccionario(queries.DiccionarioDeLibrosPorLetra(), 'S');
 
-void ImprimirAnimalesAgrupadosDiccionario(ILookup<char, Book> ListaDeLibros, char letra)
+ImprimirValoresAgrupadosPorAnoConDiccionario(queries.DiccionarioDeLibrosPorAno(), 2005);
+
+void ImprimirValoresAgrupadosPorAnoConDiccionario(ILookup<int, Book> ListaDeLibros, int ano)
+{
+    Console.WriteLine("{0,-60} {1, 15} {2,15}","Título", "N. páginas", "Fecha publicacion");
+    foreach (var libro in ListaDeLibros[ano])
+    {
+        Console.WriteLine("{0,-60} {1, 15} {2,15}", libro.Title, libro.PageCount, libro.PublishedDate.ToShortDateString());
+    }
+}
+
+void ImprimirValoresAgrupadosDiccionario(ILookup<char, Book> ListaDeLibros, char letra)
 {
     Console.WriteLine("{0,-60} {1, 15} {2,15}","Título", "N. páginas", "Fecha publicacion");
     foreach (var libro in ListaDeLibros[letra])

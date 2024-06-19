@@ -210,5 +210,10 @@ namespace curso_linq
         {
             return librosCollection.ToLookup(p => p.Title[0], p => p);
         }
+
+        public ILookup<int, Book> DiccionarioDeLibrosPorAno()
+        {
+            return librosCollection.ToLookup(p => p.PublishedDate.Year, p => p);
+        }
     }
 }
