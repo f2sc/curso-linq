@@ -44,7 +44,23 @@ LinqQueries queries = new LinqQueries();
 
 //Console.WriteLine($"Promedio de caracteres que tienen los títulos:\n {queries.PromedioDeCaracteresQueTienenLosTitulos()}");
 
-Console.WriteLine($"Promedio de número de páginas que tienen todos los libros:\n {queries.PromedioDeNumeroDePaginasDeTodosLosLibros()}");
+//Console.WriteLine($"Promedio de número de páginas que tienen todos los libros:\n {queries.PromedioDeNumeroDePaginasDeTodosLosLibros()}");
+
+ImprimirValoresAgrupados(queries.LibrosDespuesDel2000AgrupadosPorAno());
+
+void ImprimirValoresAgrupados(IEnumerable<IGrouping<int, Book>> ListaDeLibros)
+{
+    foreach(var grupo in ListaDeLibros)
+    {
+        Console.WriteLine("\n");
+        Console.WriteLine($"Grupo: {grupo.Key}");
+        Console.WriteLine("{0,-60} {1, 15} {2,15}","Título", "N. páginas", "Fecha publicacion");
+        foreach (var libro in grupo)
+        {
+            Console.WriteLine("{0,-60} {1, 15} {2,15}", libro.Title, libro.PageCount, libro.PublishedDate.ToShortDateString());
+        }
+    }
+}
 
 void ImprimirValores(IEnumerable<Book> ListaDeLibros)
 {

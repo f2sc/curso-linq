@@ -192,5 +192,12 @@ namespace curso_linq
                 .Where(p => p.PageCount > 0)
                 .Average(p => p.PageCount);
         }
+
+        public IEnumerable<IGrouping<int, Book>> LibrosDespuesDel2000AgrupadosPorAno()
+        {
+            return librosCollection
+                .Where(p => p.PublishedDate.Year >= 2000)
+                .GroupBy(p => p.PublishedDate.Year);
+        }
     }
 }
