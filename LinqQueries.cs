@@ -205,5 +205,10 @@ namespace curso_linq
             return animalesCollection
                 .GroupBy(p => p.Color);
         }
+
+        public ILookup<char, Book> DiccionarioDeLibrosPorLetra()
+        {
+            return librosCollection.ToLookup(p => p.Title[0], p => p);
+        }
     }
 }

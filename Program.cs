@@ -48,7 +48,18 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirValoresAgrupados(queries.LibrosDespuesDel2000AgrupadosPorAno());
 
-ImprimirAnimalesAgrupados(queries.AnimalesAgrupadosPorColores());
+//ImprimirAnimalesAgrupados(queries.AnimalesAgrupadosPorColores());
+
+ImprimirAnimalesAgrupadosDiccionario(queries.DiccionarioDeLibrosPorLetra(), 'S');
+
+void ImprimirAnimalesAgrupadosDiccionario(ILookup<char, Book> ListaDeLibros, char letra)
+{
+    Console.WriteLine("{0,-60} {1, 15} {2,15}","Título", "N. páginas", "Fecha publicacion");
+    foreach (var libro in ListaDeLibros[letra])
+    {
+        Console.WriteLine("{0,-60} {1, 15} {2,15}", libro.Title, libro.PageCount, libro.PublishedDate.ToShortDateString());
+    }
+}
 
 void ImprimirValoresAgrupados(IEnumerable<IGrouping<int, Book>> ListaDeLibros)
 {
@@ -107,12 +118,11 @@ void ImprimirAnimalesAgrupados(IEnumerable<IGrouping<string, Animal>> ListaDeAni
     foreach (var AnimalesColores in ListaDeAnimales)
     {
         Console.WriteLine($"\nColor: {AnimalesColores.Key}");
-    Console.WriteLine("{0,-60} {1, 15}", "Nombre", "Color");
+        Console.WriteLine("{0,-60} {1, 15}", "Nombre", "Color");
         foreach (var animal in AnimalesColores)
         {
             Console.WriteLine("{0,-60} {1, 15}", animal.Nombre, animal.Color);
         }
-
     }
 }
 
