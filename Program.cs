@@ -52,7 +52,9 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirValoresAgrupadosDiccionario(queries.DiccionarioDeLibrosPorLetra(), 'S');
 
-ImprimirValoresAgrupadosPorAnoConDiccionario(queries.DiccionarioDeLibrosPorAno(), 2005);
+//ImprimirValoresAgrupadosPorAnoConDiccionario(queries.DiccionarioDeLibrosPorAno(), 2005);
+
+ImprimirValores(queries.LibrosConMasDe500PaginasDespuesDel2005ConJoin());
 
 void ImprimirValoresAgrupadosPorAnoConDiccionario(ILookup<int, Book> ListaDeLibros, int ano)
 {
@@ -91,7 +93,7 @@ void ImprimirValores(IEnumerable<Book> ListaDeLibros)
     Console.WriteLine("{0,-60} {1, 15} {2,15}\n","Título", "N. páginas", "Fecha publicacion");
     foreach(var item in ListaDeLibros)
     {
-        Console.WriteLine("{0,-60} {1, 15} {2,15}\n", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
+        Console.WriteLine("{0,-60} {1, 15} {2,15}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
     }
 }
 
